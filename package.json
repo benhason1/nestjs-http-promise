@@ -1,6 +1,6 @@
 {
   "name": "nestjs-http-promise",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "keywords": ["nestjs", "http", "promise", "retry", "retries", "axios"],
   "description": "promise implementation of nestjs http module with retries feature using axios-retry and axios",
   "author": "Ben Hason",
