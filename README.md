@@ -1,4 +1,5 @@
 # nestjs-http-promise
+[![npm version](https://img.shields.io/npm/v/nestjs-http-promise.svg?style=flat-square)](https://www.npmjs.org/package/nestjs-http-promise)
 
 ## description
 nestjs module that just doing little modification to the original and good **nestjs** http module.
@@ -6,11 +7,13 @@ nestjs module that just doing little modification to the original and good **nes
 
 ## features
   * axios - the most used package for http requests in npm.
-  * promise based - most of us using the current http module and on every call do `.toPromise()`
-    because most of the time we do not need the features of observable.
-  * retries - one of the powerful features of observable is its ability to do in very simple way,
-    you can do it by just adding the retry operator, this package will provide you the same feature even in easier way,
-    just pass `{ retries: NUMBER_OF_RETRIES }` in the config of the http module.
+  * promise based - most of us using the current http module that uses observable which we don't use most of the time 
+    and in order to avoid it were just calling `.toPromise()` every http call.
+  * retries - in many cases we will want to retry a failing http call.
+    with observable we could just add the retry operator (rxjs) but with promises we need to implement this logic ourselves.
+    this package will make it easy for you, just pass `{ retries: NUMBER_OF_RETRIES }` in the config of the http module.
+    **more details in the configuration section**
+    
 ## quick start 
 ### installing
 Using npm:
@@ -99,7 +102,7 @@ Note that in this example, the HttpConfigService has to implement HttpModuleOpti
 @Injectable()
 class HttpConfigService implements HttpModuleOptionsFactory {
   async createHttpOptions(): Promise<HttpModuleOptions> {
-    const configurationData = await sonmeAsyncMethod();
+    const configurationData = await someAsyncMethod();
     return {
       timeout: configurationData.timeout,
       retries: 5,
