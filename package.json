@@ -1,0 +1,59 @@
+{
+  "name": "nestjs-http-promise",
+  "version": "2.0.0",
+  "keywords": ["nestjs", "http", "promise", "retry", "retries", "axios"],
+  "description": "promise implementation of nestjs http module with retries feature using axios-retry and axios",
+  "author": "Ben Hason",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "url": "https://github.com/benhason1/nestjs-http-promise#readme",
+  "scripts": {
+    "build": "rimraf -rf dist && tsc -p tsconfig.json",
+    "format": "prettier --write \"{lib}/**/*.ts\"",
+    "lint": "eslint 'lib/**/*.ts' --fix",
+    "prepublish:npm": "npm run build",
+    "publish:npm": "npm publish --access public",
+    "publish:beta": "npm publish --access public --tag beta",
+    "prepublish:beta": "npm run build"
+  },
+  "dependencies": {
+    "axios": "0.21.1",
+    "axios-retry": "^3.1.9"
+  },
+  "devDependencies": {
+    "@nestjs/common": "8.0.6",
+    "@nestjs/core": "8.0.6",
+    "@nestjs/platform-express": "8.0.6",
+    "@types/node": "14.17.14",
+    "@typescript-eslint/eslint-plugin": "4.30.0",
+    "@typescript-eslint/parser": "4.30.0",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.24.2",
+    "husky": "7.0.2",
+    "lint-staged": "11.1.2",
+    "prettier": "^2.3.2",
+    "reflect-metadata": "0.1.13",
+    "rimraf": "3.0.2",
+    "typescript": "4.4.2"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^7.0.0 || ^8.0.0",
+    "reflect-metadata": "^0.1.12"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benhason1/nestjs-http-promise"
+  }
+}
