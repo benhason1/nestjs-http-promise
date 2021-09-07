@@ -49,7 +49,7 @@ public callSomeServer(): Promise<object> {
 }
 ```
 
-##configuration
+## configuration
 
 the service uses axios and axios-retry, so you can pass any [AxiosRequestConfig](https://github.com/axios/axios#request-config)
 And/Or [AxiosRetryConfig](https://github.com/softonic/axios-retry#options)
