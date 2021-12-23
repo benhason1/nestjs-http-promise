@@ -7,7 +7,7 @@ nestjs module that just doing little modification to the original and good **nes
 
 ## features
   * axios - the most used package for http requests in npm and the one used by nestjs official http library.
-    * better axios stack trace - axios has an [open issue]((https://github.com/axios/axios/issues/2387)) about improvement of their stack trace. 
+    * better axios stack trace - axios has an [open issue](https://github.com/axios/axios/issues/2387) about improvement of their stack trace. 
       in this library there is a default interceptor that will intercept the stack trace and will add data to it.
   * promise - the most used package for http requests in npm and the one used by nestjs official http library.
   * promise based - most of us using the current http module that uses observable which we don't use most of the time 
