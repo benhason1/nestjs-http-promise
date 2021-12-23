@@ -14,7 +14,7 @@ import {
 } from './interfaces';
 import axiosRetry from 'axios-retry';
 
-const createAxiosRetry = (config: HttpModuleOptions) => {
+const createAxiosRetry = (config?: HttpModuleOptions) => {
   const axiosInstance = Axios.create(config);
   axiosRetry(axiosInstance, config);
   return axiosInstance;
@@ -25,7 +25,7 @@ const createAxiosRetry = (config: HttpModuleOptions) => {
     HttpService,
     {
       provide: AXIOS_INSTANCE_TOKEN,
-      useValue: Axios,
+      useValue: createAxiosRetry(),
     },
   ],
   exports: [HttpService],
