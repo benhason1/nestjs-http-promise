@@ -75,7 +75,8 @@ import { HttpModule } from 'nestjs-http-promise'
 ```
 
 ### default configuration
- just the default config of axios-retry : https://github.com/softonic/axios-retry#options
+ * default config of axios-retry : https://github.com/softonic/axios-retry#options
+ * better axios stack trace is added by default, you can turn it off by passing the **isBetterStackTraceEnabled** to false.
 
 ## async configuration
 When you need to pass module options asynchronously instead of statically, use the `registerAsync()` method **just like in nest httpModule**.
