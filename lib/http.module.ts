@@ -15,7 +15,7 @@ import {
 import axiosRetry from 'axios-retry';
 import axiosBetterStacktrace from 'axios-better-stacktrace';
 
-const createAxiosInstance = (config: HttpModuleOptions) => {
+const createAxiosRetry = (config?: HttpModuleOptions) => {
   const axiosInstance = Axios.create(config);
   axiosRetry(axiosInstance, config);
   axiosBetterStacktrace(axiosInstance);
@@ -27,7 +27,7 @@ const createAxiosInstance = (config: HttpModuleOptions) => {
     HttpService,
     {
       provide: AXIOS_INSTANCE_TOKEN,
-      useValue: Axios,
+      useValue: createAxiosRetry(),
     },
   ],
   exports: [HttpService],
