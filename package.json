@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "axios": "~0.24.0",
+    "axios-better-stacktrace": "^2.1.2",
     "axios-retry": "^3.2.4"
   },
   "devDependencies": {

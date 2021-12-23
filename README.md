@@ -6,7 +6,9 @@ nestjs module that just doing little modification to the original and good **nes
 
 
 ## features
-  * axios - the most used package for http requests in npm.
+  * axios - the most used package for http requests in npm and the one used by nestjs official http library.
+    * better axios stack trace - axios has an [open issue](https://github.com/axios/axios/issues/2387) about improvement of their stack trace. 
+      in this library there is a default interceptor that will intercept the stack trace and will add data to it.
   * promise based - most of us using the current http module that uses observable which we don't use most of the time 
     and in order to avoid it were just calling `.toPromise()` every http call.
   * retries - in many cases we will want to retry a failing http call.
@@ -73,7 +75,8 @@ import { HttpModule } from 'nestjs-http-promise'
 ```
 
 ### default configuration
- just the default config of axios-retry : https://github.com/softonic/axios-retry#options
+ * default config of axios-retry : https://github.com/softonic/axios-retry#options
+ * better axios stack trace is added by default, you can turn it off by passing the **isBetterStackTraceEnabled** to false.
 
 ## async configuration
 When you need to pass module options asynchronously instead of statically, use the `registerAsync()` method **just like in nest httpModule**.
