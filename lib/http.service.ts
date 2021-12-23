@@ -1,34 +1,30 @@
 import { Injectable } from '@nestjs/common';
 import { Inject } from '@nestjs/common';
-import Axios ,{AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import Axios ,{ AxiosInstance } from 'axios';
 import { AXIOS_INSTANCE_TOKEN } from "./http.constants";
 
 @Injectable()
 export class HttpService {
+    public readonly put: typeof Axios.put;
+    public readonly post: typeof Axios.post;
+    public readonly patch: typeof Axios.patch;
+    public readonly head: typeof Axios.patch;
+    public readonly delete: typeof Axios.delete;
+    public readonly get: typeof Axios.get;
+    public readonly request: typeof Axios.request;
+
     constructor(
         @Inject(AXIOS_INSTANCE_TOKEN)
         private readonly instance: AxiosInstance = Axios,
-    ) {}
-    request<T = any>(config: AxiosRequestConfig): Promise<AxiosResponse<T>> {
-        return this.instance.request(config)
-    }
-    get<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
-        return this.instance.get(url, config);
-    }
-    delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
-        return this.instance.delete(url, config);
-    }
-    head<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
-        return this.instance.head(url, config);
-    }
-    post<T = any>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
-        return this.instance.post(url, data, config);
-    }
-    put<T = any>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
-        return this.instance.put(url, data, config);
-    }
-    patch<T = any>(url: string, data?: Record<string, any>, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
-        return this.instance.patch(url, data, config);
+    ) {
+        this.put = this.instance.put;
+        this.post = this.instance.post;
+        this.patch = this.instance.patch;
+        this.head = this.instance.head;
+        this.head = this.instance.head;
+        this.delete = this.instance.delete;
+        this.get = this.instance.get;
+        this.request = this.instance.request;
     }
 
     get axiosRef(): AxiosInstance {
