@@ -18,7 +18,9 @@ import axiosBetterStacktrace from 'axios-better-stacktrace';
 const createAxiosInstance = (config?: HttpModuleOptions) => {
   const axiosInstance = Axios.create(config);
   axiosRetry(axiosInstance, config);
-  axiosBetterStacktrace(axiosInstance);
+  if(config.isBetterStackTraceEnabled === undefined || config.isBetterStackTraceEnabled) {
+    axiosBetterStacktrace(axiosInstance);
+  }
   return axiosInstance;
 }
 
