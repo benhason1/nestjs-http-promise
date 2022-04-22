@@ -1,6 +1,6 @@
 {
   "name": "nestjs-http-promise",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "keywords": [
     "nestjs",
     "http",
