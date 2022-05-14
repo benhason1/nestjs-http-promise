@@ -1,6 +1,6 @@
 {
   "name": "nestjs-http-promise",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "keywords": [
     "nestjs",
     "http",
@@ -19,6 +19,7 @@
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
     "format": "prettier --write \"{lib}/**/*.ts\"",
     "lint": "eslint 'lib/**/*.ts' --fix",
+    "prepare": "npm run build",
     "prepublish:npm": "npm run build",
     "publish:npm": "npm publish --access public",
     "publish:beta": "npm publish --access public --tag beta",
