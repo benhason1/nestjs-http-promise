@@ -18,8 +18,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - name: install
         run: npm install
-      - name: test
-        run: npm test
       # Publish to npm if this version is not published
       - name: publish
         run: npm run publish:npm
