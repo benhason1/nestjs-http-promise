@@ -25,9 +25,9 @@ const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN } =
       provide: AXIOS_INSTANCE_TOKEN,
       inject: [{ token: MODULE_OPTIONS_TOKEN, optional: true }],
       useFactory: (options: HttpModuleOptions = {}) => {
-        const axiosInstance = Axios.create(options?.config);
+        const axiosInstance = Axios.create(options?.axiosConfig);
 
-        axiosRetry(axiosInstance, options?.config);
+        axiosRetry(axiosInstance, options?.axiosRetryConfig);
 
         if (options.interceptors?.request) {
           axiosInstance.interceptors.request.use(

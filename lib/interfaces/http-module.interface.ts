@@ -7,16 +7,9 @@ import type {
 import type { IAxiosRetryConfig } from 'axios-retry';
 
 export type HttpModuleOptions = {
-  config?: AxiosRequestConfig & IAxiosRetryConfig;
+  axiosConfig?: AxiosRequestConfig;
 
   interceptors?: {
-    response?: {
-      onFulfilled?: (
-        value: AxiosResponse,
-      ) => AxiosResponse | Promise<AxiosResponse>;
-      onRejected?: (error: any) => any;
-      options?: AxiosInterceptorOptions;
-    };
     request?: {
       onFulfilled?: (
         value: InternalAxiosRequestConfig,
@@ -24,5 +17,14 @@ export type HttpModuleOptions = {
       onRejected?: (error: any) => any;
       options?: AxiosInterceptorOptions;
     };
+    response?: {
+      onFulfilled?: (
+        value: AxiosResponse,
+      ) => AxiosResponse | Promise<AxiosResponse>;
+      onRejected?: (error: any) => any;
+      options?: AxiosInterceptorOptions;
+    };
   };
+
+  axiosRetryConfig?: IAxiosRetryConfig;
 };

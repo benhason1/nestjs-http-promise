@@ -11,7 +11,7 @@ describe('HttpModule', () => {
 
     const httpService = moduleRef.get<HttpService>(HttpService);
 
-    expect(httpService).toBeDefined();
+    expect(httpService).toBeInstanceOf(HttpService);
   });
 
   it('should register synchronously', async () => {
@@ -21,7 +21,7 @@ describe('HttpModule', () => {
 
     const httpService = moduleRef.get<HttpService>(HttpService);
 
-    expect(httpService).toBeDefined();
+    expect(httpService).toBeInstanceOf(HttpService);
   });
 
   it('should register asynchronously', async () => {
@@ -37,7 +37,7 @@ describe('HttpModule', () => {
 
     const httpService = moduleRef.get<HttpService>(HttpService);
 
-    expect(httpService).toBeDefined();
+    expect(httpService).toBeInstanceOf(HttpService);
   });
 
   it('should register interceptors', async () => {
