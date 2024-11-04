@@ -4,6 +4,16 @@ import { Test } from '@nestjs/testing';
 import { HttpModule, HttpService } from './index';
 
 describe('HttpModule', () => {
+  it('should implicitly register', async () => {
+    const moduleRef = await Test.createTestingModule({
+      imports: [HttpModule],
+    }).compile();
+
+    const httpService = moduleRef.get<HttpService>(HttpService);
+
+    expect(httpService).toBeDefined();
+  });
+
   it('should register synchronously', async () => {
     const moduleRef = await Test.createTestingModule({
       imports: [HttpModule.register()],

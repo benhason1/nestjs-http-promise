@@ -13,14 +13,17 @@ import { HttpService } from './http.service';
 import { HttpModuleOptions } from './interfaces';
 
 const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN } =
-  new ConfigurableModuleBuilder<HttpModuleOptions>().build();
+  new ConfigurableModuleBuilder<HttpModuleOptions>({
+    moduleName: 'HttpModule',
+    optionsInjectionToken: 'HTTP_MODULE_OPTIONS_TOKEN',
+  }).build();
 
 @Module({
   providers: [
     HttpService,
     {
       provide: AXIOS_INSTANCE_TOKEN,
-      inject: [MODULE_OPTIONS_TOKEN],
+      inject: [{ token: MODULE_OPTIONS_TOKEN, optional: true }],
       useFactory: (options: HttpModuleOptions = {}) => {
         const axiosInstance = Axios.create(options?.config);
 
