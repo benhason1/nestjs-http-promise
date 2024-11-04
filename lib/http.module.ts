@@ -21,9 +21,27 @@ const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN } =
     {
       provide: AXIOS_INSTANCE_TOKEN,
       inject: [MODULE_OPTIONS_TOKEN],
-      useFactory: (options: HttpModuleOptions) => {
-        const axiosInstance = Axios.create(options);
-        axiosRetry(axiosInstance, options);
+      useFactory: (options: HttpModuleOptions = {}) => {
+        const axiosInstance = Axios.create(options?.config);
+
+        axiosRetry(axiosInstance, options?.config);
+
+        if (options.interceptors?.request) {
+          axiosInstance.interceptors.request.use(
+            options.interceptors.request.onFulfilled,
+            options.interceptors.request.onRejected,
+            options.interceptors.request.options,
+          );
+        }
+
+        if (options.interceptors?.response) {
+          axiosInstance.interceptors.response.use(
+            options.interceptors.response.onFulfilled,
+            options.interceptors.response.onRejected,
+            options.interceptors.response.options,
+          );
+        }
+
         return axiosInstance;
       },
     },
