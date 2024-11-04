@@ -8,7 +8,7 @@ import { randomStringGenerator } from '@nestjs/common/utils/random-string-genera
 import Axios from 'axios';
 import axiosRetry from 'axios-retry';
 
-import { AXIOS_INSTANCE_TOKEN, HTTP_MODULE_ID } from './http.constants';
+import { AXIOS_INSTANCE_TOKEN, HTTP_MODULE_ID_TOKEN } from './http.constants';
 import { HttpService } from './http.service';
 import { HttpModuleOptions } from './interfaces';
 
@@ -49,7 +49,7 @@ const { ConfigurableModuleClass, MODULE_OPTIONS_TOKEN } =
       },
     },
     {
-      provide: HTTP_MODULE_ID,
+      provide: HTTP_MODULE_ID_TOKEN,
       useValue: randomStringGenerator(),
     },
   ],
