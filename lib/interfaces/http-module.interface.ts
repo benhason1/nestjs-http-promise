@@ -1,20 +1,30 @@
-import { ModuleMetadata, Provider, Type } from '@nestjs/common';
-import { AxiosRequestConfig } from 'axios';
-import { IAxiosRetryConfig } from 'axios-retry'
+import type {
+  AxiosInterceptorOptions,
+  AxiosRequestConfig,
+  AxiosResponse,
+  InternalAxiosRequestConfig,
+} from 'axios';
+import type { IAxiosRetryConfig } from 'axios-retry';
 
-export type HttpModuleOptions = (AxiosRequestConfig & IAxiosRetryConfig);
+export type HttpModuleOptions = {
+  axiosConfig?: AxiosRequestConfig;
 
-export interface HttpModuleOptionsFactory {
-    createHttpOptions(): Promise<HttpModuleOptions> | HttpModuleOptions;
-}
+  interceptors?: {
+    request?: {
+      onFulfilled?: (
+        value: InternalAxiosRequestConfig,
+      ) => InternalAxiosRequestConfig | Promise<InternalAxiosRequestConfig>;
+      onRejected?: (error: any) => any;
+      options?: AxiosInterceptorOptions;
+    };
+    response?: {
+      onFulfilled?: (
+        value: AxiosResponse,
+      ) => AxiosResponse | Promise<AxiosResponse>;
+      onRejected?: (error: any) => any;
+      options?: AxiosInterceptorOptions;
+    };
+  };
 
-export interface HttpModuleAsyncOptions
-    extends Pick<ModuleMetadata, 'imports'> {
-    useExisting?: Type<HttpModuleOptionsFactory>;
-    useClass?: Type<HttpModuleOptionsFactory>;
-    useFactory?: (
-        ...args: any[]
-    ) => Promise<HttpModuleOptions> | HttpModuleOptions;
-    inject?: any[];
-    extraProviders?: Provider[];
-}
+  axiosRetryConfig?: IAxiosRetryConfig;
+};

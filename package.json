@@ -1,6 +1,6 @@
 {
   "name": "nestjs-http-promise",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "keywords": [
     "nestjs",
     "http",
@@ -19,6 +19,7 @@
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
     "format": "prettier --write \"{lib}/**/*.ts\"",
     "lint": "eslint 'lib/**/*.ts' --fix",
+    "test": "vitest",
     "prepare": "npm run build",
     "prepublish:npm": "npm run build",
     "publish:npm": "npm publish --access public",
@@ -32,7 +33,8 @@
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
-    "@types/node": "^14.18.13",
+    "@nestjs/testing": "^10.4.6",
+    "@types/node": "^18.19.64",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
     "eslint": "^7.32.0",
@@ -43,12 +45,13 @@
     "prettier": "^2.6.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "typescript": "^4.6.3"
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
   },
   "peerDependencies": {
     "@nestjs/common": "^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0",
-    "reflect-metadata": "^0.1.12",
-    "axios": "^1.3.0"
+    "axios": "^1.3.0",
+    "reflect-metadata": "^0.2.0"
   },
   "lint-staged": {
     "*.ts": [
