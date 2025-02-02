@@ -17,7 +17,7 @@
   "url": "https://github.com/benhason1/nestjs-http-promise#readme",
   "scripts": {
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
-    "format": "prettier --write \"{lib}/**/*.ts\"",
+    "format": "prettier --write \"lib/**/*.ts\"",
     "lint": "eslint 'lib/**/*.ts' --fix",
     "prepare": "npm run build",
     "prepublish:npm": "npm run build",

@@ -18,7 +18,7 @@ const createAxiosInstance = (config?: HttpModuleOptions) => {
   const axiosInstance = Axios.create(config);
   axiosRetry(axiosInstance, config);
   return axiosInstance;
-}
+};
 
 @Module({
   providers: [
@@ -55,7 +55,8 @@ export class HttpModule {
         ...this.createAsyncProviders(options),
         {
           provide: AXIOS_INSTANCE_TOKEN,
-          useFactory: (config: HttpModuleOptions) => createAxiosInstance(config),
+          useFactory: (config: HttpModuleOptions) =>
+            createAxiosInstance(config),
           inject: [HTTP_MODULE_OPTIONS],
         },
         {
@@ -68,27 +69,25 @@ export class HttpModule {
   }
 
   private static createAsyncProviders(
-      options: HttpModuleAsyncOptions,
+    options: HttpModuleAsyncOptions,
   ): Provider[] {
     if (options.useExisting || options.useFactory) {
       return [this.createAsyncOptionsProvider(options)];
     }
 
-    const providers = [
-      this.createAsyncOptionsProvider(options)
-    ];
+    const providers = [this.createAsyncOptionsProvider(options)];
 
-    if(options.useClass)
+    if (options.useClass)
       providers.push({
         provide: options.useClass,
         useClass: options.useClass,
-      })
+      });
 
     return providers;
   }
 
   private static createAsyncOptionsProvider(
-      options: HttpModuleAsyncOptions,
+    options: HttpModuleAsyncOptions,
   ): Provider {
     if (options.useFactory) {
       return {
@@ -99,15 +98,13 @@ export class HttpModule {
     }
 
     let inject;
-    if (options.useExisting)
-      inject = [options.useExisting];
-    else if (options.useClass)
-      inject = [options.useClass];
+    if (options.useExisting) inject = [options.useExisting];
+    else if (options.useClass) inject = [options.useClass];
 
     return {
       provide: HTTP_MODULE_OPTIONS,
       useFactory: async (optionsFactory: HttpModuleOptionsFactory) =>
-          optionsFactory.createHttpOptions(),
+        optionsFactory.createHttpOptions(),
       inject,
     };
   }
