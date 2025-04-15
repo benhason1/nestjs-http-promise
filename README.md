@@ -1,6 +1,11 @@
 # nestjs-http-promise
 [![npm version](https://img.shields.io/npm/v/nestjs-http-promise.svg?style=flat-square)](https://www.npmjs.org/package/nestjs-http-promise)
 [![npm downloads](https://img.shields.io/npm/dm/nestjs-http-promise.svg?style=flat-square)](http://npm-stat.com/charts.html?package=nestjs-http-promise)
+<a href="https://www.buymeacoffee.com/benhason" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="28" width="120">
+</a>
+
+
 
 ## description
 nestjs module that just doing little modification to the original and good **nestjs** http module.
