@@ -2,9 +2,8 @@ name: publish-and-tag
 env:
   CI: true
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [published]
 jobs:
   publish-to-npm:
     runs-on: ubuntu-latest
